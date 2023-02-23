@@ -3,3 +3,6 @@ xpubs and zpubs
 
 A listing of wallet derivation paths
 https://walletsrecovery.org/
+
+Darthcoin's Electrum to Sparrow migration guide
+https://darthcoin.substack.com/p/electrum-to-sparrow
