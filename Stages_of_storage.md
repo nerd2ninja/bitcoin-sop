@@ -26,7 +26,7 @@ https://selfcustody.github.io/krux/
 
 # Prebuilt Signing Devices
 
-**Do not use a signing device company's software wallet to broadcast transactions. Even when open source, a company specific software wallet is often too niche for the community to review and scrutinize**
+**Do not use a closed source software wallet. A signing device specific software wallet can sometimes have features which do extra verification that is specific to that signing device. The trade off however is that company specific software wallets even when open source are often too niche for the greater Bitcoin community to review and scrutinize**
 
 ## Cold Card
 https://coldcard.com/ **Requires manual dismantling of wireless devices**
