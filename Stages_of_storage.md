@@ -1,3 +1,9 @@
+# Introduction
+
+You will notice no information in this document contains a set of "Do this, don't do that". Everything is a matter of trade offs. Please read throughly and choose the trade offs that work best for your use case
+
+# Stages of Storage
+
 Explainer for the Stages of Bitcoin self-custody from lightning to cold storage:
 https://armantheparman.com/bitcoin-storage-get-better/
 
