@@ -6,3 +6,6 @@ https://learning.chaincode.com/
 
 Bitcoin Core repository explained in fine detail
 https://obc.256k1.dev/
+
+Compiling, Reviewing, and Contributing to the Bitcoin codebase
+https://jonatack.github.io/articles
