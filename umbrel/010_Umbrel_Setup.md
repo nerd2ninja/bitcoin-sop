@@ -130,15 +130,15 @@
 
   - Look for the following section near the bottom and uncomment/edit the appropriate lines as follows:
 
-```
-# Example static IP configuration:
-interface eth0
-static ip_address=192.168.0.20/24
-#static ip6_address=xxxx:xxxx:xxxx:xxxx::ff/64
-static routers=192.168.0.2
-static domain_name_servers=8.8.4.4 8.8.8.8 xxxx:xxxx:xxxx:xxxx::1
-```
-
+    ```
+    # Example static IP configuration:
+    interface eth0
+    static ip_address=192.168.0.20/24
+    #static ip6_address=xxxx:xxxx:xxxx:xxxx::ff/64
+    static routers=192.168.0.2
+    static domain_name_servers=8.8.4.4 8.8.8.8 xxxx:xxxx:xxxx:xxxx::1
+    ```
+  
   - You may substitute your favorite DNS server IP addresses.
   - Save the file (`Ctrl`+`X` to exit, then `Y` to confirm save, then `Enter` to accept the existing filename).
 
