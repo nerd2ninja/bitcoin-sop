@@ -52,14 +52,14 @@ Once these items have been located and secured, proceed to the next step.
     :information_source: You will be prompted for the password again.
 
   - Look for the following section near the bottom and uncomment/edit the appropriate lines as follows:
-```
-# Example static IP configuration:
-interface eth0
-static ip_address=192.168.0.10/24
-#static ip6_address=xxxx:xxxx:xxxx:xxxx::ff/64
-static routers=192.168.0.2
-static domain_name_servers=8.8.4.4 8.8.8.8 xxxx:xxxx:xxxx:xxxx::1
-```
+    ```
+    # Example static IP configuration:
+    interface eth0
+    static ip_address=192.168.0.10/24
+    #static ip6_address=xxxx:xxxx:xxxx:xxxx::ff/64
+    static routers=192.168.0.2
+    static domain_name_servers=8.8.4.4 8.8.8.8 xxxx:xxxx:xxxx:xxxx::1
+    ```
 
   This assumes `192.168.0.10` is the desired static IP address of the production Umbrel node. Users’ apps would already be configured for it.
   - Save the file (`Ctrl`+`X` to exit, then `Y` to confirm save, then `Enter` to accept the existing filename).
@@ -96,10 +96,10 @@ static domain_name_servers=8.8.4.4 8.8.8.8 xxxx:xxxx:xxxx:xxxx::1
   - Remove the line `connect=192.168.0.10` (assuming this is the IP address of the old primary node).
   - In its place, add the following lines:
 
-```
-whitelist=192.168.0.15
-whitelist=192.168.0.20
-```
+    ```
+    whitelist=192.168.0.15
+    whitelist=192.168.0.20
+    ```
 
   :information_source: This will prevent the Bitcoin Node from suspecting DoS attacks from those IP addresses and blocking them.
 
@@ -191,135 +191,135 @@ whitelist=192.168.0.20
 
   After one block is mined, you might check the channel status and see something similar to the following:
 
-```
-umbrel@umbrel:~ $ ~/umbrel/bin/lncli pendingchannels
+  ```
+  umbrel@umbrel:~ $ ~/umbrel/bin/lncli pendingchannels
 
-  *** Deprecation notice ***
-  In a future version of Umbrel, 'lncli' will be removed.
+    *** Deprecation notice ***
+    In a future version of Umbrel, 'lncli' will be removed.
 
-  Please instead use:
-  ./scripts/app compose lightning exec lnd lncli <sub-command>
+    Please instead use:
+    ./scripts/app compose lightning exec lnd lncli <sub-command>
 
-{
-    "total_limbo_balance": "0",
-    "pending_open_channels": [
-    ],
-    "pending_closing_channels": [
-    ],
-    "pending_force_closing_channels": [
-    ],
-    "waiting_close_channels": [
-        {
-            "channel": {
-                "remote_node_pub": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                "channel_point": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:1",
-                "capacity": "xxxxxxxx",
-                "local_balance": "0",
-                "remote_balance": "0",
-                "local_chan_reserve_sat": "0",
-                "remote_chan_reserve_sat": "0",
-                "initiator": "INITIATOR_LOCAL",
-                "commitment_type": "ANCHORS",
-                "num_forwarding_packages": "0",
-                "chan_status_flags": "ChanStatusLocalDataLoss|ChanStatusRestored",
-                "private": true
-            },
-            "limbo_balance": "0",
-            "commitments": {
-                "local_txid": "",
-                "remote_txid": "",
-                "remote_pending_txid": "",
-                "local_commit_fee_sat": "0",
-                "remote_commit_fee_sat": "0",
-                "remote_pending_commit_fee_sat": "0"
-            },
-            "closing_txid": ""
-        }
-    ]
-}
-umbrel@umbrel:~ $
-```
+  {
+      "total_limbo_balance": "0",
+      "pending_open_channels": [
+      ],
+      "pending_closing_channels": [
+      ],
+      "pending_force_closing_channels": [
+      ],
+      "waiting_close_channels": [
+          {
+              "channel": {
+                  "remote_node_pub": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                  "channel_point": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:1",
+                  "capacity": "xxxxxxxx",
+                  "local_balance": "0",
+                  "remote_balance": "0",
+                  "local_chan_reserve_sat": "0",
+                  "remote_chan_reserve_sat": "0",
+                  "initiator": "INITIATOR_LOCAL",
+                  "commitment_type": "ANCHORS",
+                  "num_forwarding_packages": "0",
+                  "chan_status_flags": "ChanStatusLocalDataLoss|ChanStatusRestored",
+                  "private": true
+              },
+              "limbo_balance": "0",
+              "commitments": {
+                  "local_txid": "",
+                  "remote_txid": "",
+                  "remote_pending_txid": "",
+                  "local_commit_fee_sat": "0",
+                  "remote_commit_fee_sat": "0",
+                  "remote_pending_commit_fee_sat": "0"
+              },
+              "closing_txid": ""
+          }
+      ]
+  }
+  umbrel@umbrel:~ $
+  ```
 
-In the best of cases, after three blocks have been mined, the former Lightning Wallet balance should be restored to the Bitcoin Wallet and the balance updated accordingly.
+  In the best of cases, after three blocks have been mined, the former Lightning Wallet balance should be restored to the Bitcoin Wallet and the balance updated accordingly.
 
-If you examine the channel status again, you might see something similar to the following. Notice the following interesting bits of information:
-- limbo balances, which indicate the amount(s) being received
-- maturity_height, which indicates the block height at which the on-chain funds will be spendable (e.g. to open a new channel)
-- closing_txid, which can be useful for examination in a block explorer
+  If you examine the channel status again, you might see something similar to the following. Notice the following interesting bits of information:
+  - limbo balances, which indicate the amount(s) being received
+  - maturity_height, which indicates the block height at which the on-chain funds will be spendable (e.g. to open a new channel)
+  - closing_txid, which can be useful for examination in a block explorer
 
-```
-umbrel@umbrel:~ $ ~/umbrel/bin/lncli pendingchannels
+  ```
+  umbrel@umbrel:~ $ ~/umbrel/bin/lncli pendingchannels
 
-  *** Deprecation notice ***
-  In a future version of Umbrel, 'lncli' will be removed.
+    *** Deprecation notice ***
+    In a future version of Umbrel, 'lncli' will be removed.
 
-  Please instead use:
-  ./scripts/app compose lightning exec lnd lncli <sub-command>
+    Please instead use:
+    ./scripts/app compose lightning exec lnd lncli <sub-command>
 
-{
-    "total_limbo_balance": "xxxxxxx",
-    "pending_open_channels": [
-    ],
-    "pending_closing_channels": [
-    ],
-    "pending_force_closing_channels": [
-        {
-            "channel": {
-                "remote_node_pub": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                "channel_point": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:1",
-                "capacity": "xxxxxxxx",
-                "local_balance": "xxxxxxx",
-                "remote_balance": "0",
-                "local_chan_reserve_sat": "0",
-                "remote_chan_reserve_sat": "0",
-                "initiator": "INITIATOR_LOCAL",
-                "commitment_type": "ANCHORS",
-                "num_forwarding_packages": "0",
-                "chan_status_flags": "",
-                "private": true
-            },
-            "closing_txid": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            "limbo_balance": "xxxxxxx",
-            "maturity_height": xxxxxx,
-            "blocks_til_maturity": 1,
-            "recovered_balance": "0",
-            "pending_htlcs": [
-            ],
-            "anchor": "LIMBO"
-        }
-    ],
-    "waiting_close_channels": [
-    ]
-}
-umbrel@umbrel:~ $
-```
+  {
+      "total_limbo_balance": "xxxxxxx",
+      "pending_open_channels": [
+      ],
+      "pending_closing_channels": [
+      ],
+      "pending_force_closing_channels": [
+          {
+              "channel": {
+                  "remote_node_pub": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                  "channel_point": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:1",
+                  "capacity": "xxxxxxxx",
+                  "local_balance": "xxxxxxx",
+                  "remote_balance": "0",
+                  "local_chan_reserve_sat": "0",
+                  "remote_chan_reserve_sat": "0",
+                  "initiator": "INITIATOR_LOCAL",
+                  "commitment_type": "ANCHORS",
+                  "num_forwarding_packages": "0",
+                  "chan_status_flags": "",
+                  "private": true
+              },
+              "closing_txid": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "limbo_balance": "xxxxxxx",
+              "maturity_height": xxxxxx,
+              "blocks_til_maturity": 1,
+              "recovered_balance": "0",
+              "pending_htlcs": [
+              ],
+              "anchor": "LIMBO"
+          }
+      ],
+      "waiting_close_channels": [
+      ]
+  }
+  umbrel@umbrel:~ $
+  ```
 
-As you can see, this type of close operation only requires one more block to complete. Once the next block has been mined, the Bitcoin Wallet pane will show a completed deposit for an amount similar to the limbo amount indicated earlier. Another query of the pending channel closures will indicate that the closure is complete:
+  As you can see, this type of close operation only requires one more block to complete. Once the next block has been mined, the Bitcoin Wallet pane will show a completed deposit for an amount similar to the limbo amount indicated earlier. Another query of the pending channel closures will indicate that the closure is complete:
 
-```
-umbrel@umbrel:~ $ ~/umbrel/bin/lncli pendingchannels
+  ```
+  umbrel@umbrel:~ $ ~/umbrel/bin/lncli pendingchannels
 
-  *** Deprecation notice ***
-  In a future version of Umbrel, 'lncli' will be removed.
+    *** Deprecation notice ***
+    In a future version of Umbrel, 'lncli' will be removed.
 
-  Please instead use:
-  ./scripts/app compose lightning exec lnd lncli <sub-command>
+    Please instead use:
+    ./scripts/app compose lightning exec lnd lncli <sub-command>
 
-{
-    "total_limbo_balance": "0",
-    "pending_open_channels": [
-    ],
-    "pending_closing_channels": [
-    ],
-    "pending_force_closing_channels": [
-    ],
-    "waiting_close_channels": [
-    ]
-}
-umbrel@umbrel:~ $
-```
+  {
+      "total_limbo_balance": "0",
+      "pending_open_channels": [
+      ],
+      "pending_closing_channels": [
+      ],
+      "pending_force_closing_channels": [
+      ],
+      "waiting_close_channels": [
+      ]
+  }
+  umbrel@umbrel:~ $
+  ```
 
-Once all channels have closed, the process of recovering funds is complete.
+  Once all channels have closed, the process of recovering funds is complete.
 
 - [ ] **Install the LNbits app.**
 
@@ -385,9 +385,9 @@ Once all channels have closed, the process of recovering funds is complete.
 
   - Ensure that the following line appears in the file, adding it if necessary:
 
-```
-@reboot su -c /home/umbrel/monitor.sh umbrel 2>&1 > /dev/null
-```
+    ```
+    @reboot su -c /home/umbrel/monitor.sh umbrel 2>&1 > /dev/null
+    ```
 
   - Exit using `Ctrl`+`X`. If prompted, confirm save with `Y` and `Enter` to accept the existing filename.
   - Open the Umbrel console by pointing your web browser to [http://192.168.0.10](http://192.168.0.10) (where that is the node’s IP address).
@@ -401,10 +401,10 @@ Once all channels have closed, the process of recovering funds is complete.
   - Go back to the shell and edit the monitoring script using a command such as `pico monitor.sh`.
   - Look for the RPC_PW variable assignment:
 
-```
-# Bitcoin Core RPC Password
-RPC_PW="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-```
+    ```
+    # Bitcoin Core RPC Password
+    RPC_PW="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    ```
 
   - Update the value in quotation marks by deleting it and pasting the value previously copied from Umbrel.
 
