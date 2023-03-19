@@ -48,13 +48,13 @@
   - Run `lsblk` to identify the SSD device.
   - Run `fdisk /dev/sdx` (where sdx is the SSD device identified above, which is usually /dev/sda).
 
-  :rotating_light: Check the device carefully to avoid deleting the wrong partition from the wrong drive.
+    :rotating_light: Check the device carefully to avoid deleting the wrong partition from the wrong drive.
 
   - Enter `p` at the fdisk prompt to print a list of the drive's partitions.
   - Enter `d` to delete the (only) partition.
   - Enter `w` to write the change to disk.
 
-  :information_source: You might receive an error indicating that the device is busy and that the changes will take effect only after reboot.
+    :information_source: You might receive an error indicating that the device is busy and that the changes will take effect only after reboot.
 
   Now the drive should be ready.
 
@@ -62,14 +62,14 @@
 
   - Insert the SD card into a computer with an SD card slot (Windows PC assumed).
 
-  :information_source: You might need a size adapter. The card should be detected automatically when plugged in. If prompts to format it and/or folder windows pop open, just cancel and/or close them.
+    :information_source: You might need a size adapter. The card should be detected automatically when plugged in. If prompts to format it and/or folder windows pop open, just cancel and/or close them.
 
   - Open Raspberry Pi Imager. (The installer is fast, you can run it every time you need the imager.)
   - Under CHOOSE OS, select Use custom, then browse to the Umbrel zip file downloaded earlier.
   - Under CHOOSE STORAGE, select the SD card.
   - Finally, click WRITE and confirm.
 
-  :information_source: Again, some prompts and/or windows might pop open at the beginning and end of the writing process. Ignore, close, or cancel them.
+    :information_source: Again, some prompts and/or windows might pop open at the beginning and end of the writing process. Ignore, close, or cancel them.
 
   - When the writing and verification is finished, remove the SD card as prompted.
   - Close the imager.
@@ -79,7 +79,7 @@
   - Insert the microSD card into the Raspberry Pi 4 while the power is off.
   - Put the SSD in its dock, and plug the dock into any of the two USB 3.0 ports (blue colored) on the Raspberry Pi 4.
 
-  :rotating_light: Unless the SSD was used by Umbrel before and was not erased in the earlier step, it will be automatically (re)formatted without any warning when you turn on the Raspberry Pi 4. Normally this is desired when setting up a new node, but if there was previously any data on the drive, make sure you have a copy of any seed words, passwords, or other critical information.
+    :rotating_light: Unless the SSD was used by Umbrel before and was not erased in the earlier step, it will be automatically (re)formatted without any warning when you turn on the Raspberry Pi 4. Normally this is desired when setting up a new node, but if there was previously any data on the drive, make sure you have a copy of any seed words, passwords, or other critical information.
 
   - Connect one end of the ethernet cable to the Raspberry Pi 4 and the other end to any vacant port on your internet router, hub, or access point.
 
@@ -88,7 +88,7 @@
   - Connect the power supply to the SSD USB dock.
   - Connect the power supply to the Raspberry Pi 4 to turn it on.
 
-  :information_source: It will take some time to initialize. Wait about 5 minutes before proceeding.
+    :information_source: It will take some time to initialize. Wait about 5 minutes before proceeding.
 
 - [ ] **Find the IP address.**
 
@@ -108,7 +108,7 @@
   - For the name, enter any name. It is used only in greeting you.
   - For the password, use a secure tool to generate a new strong password.
 
-  :rotating_light: Record this password in a secure place, because there is no other way to access the Umbrel node or reset the password if it becomes lost!
+    :rotating_light: Record this password in a secure place, because there is no other way to access the Umbrel node or reset the password if it becomes lost!
 
   - Click `NEXT`.
 
@@ -121,12 +121,12 @@
   Setting a permanent IP address should be done as follows:
   - SSH into the Raspberry Pi 4 using a command such as `ssh umbrel@umbrel.local` (use the IP if needed).
 
-  :information_source: If this is the first time you are connecting, you must accept the secure fingerprint.
+    :information_source: If this is the first time you are connecting, you must accept the secure fingerprint.
 
   - When prompted, enter the password selected previously.
   - Edit the DHCP configuration using the command `sudo nano /etc/dhcpcd.conf`.
 
-  :information_source: You will be prompted for the password again.
+    :information_source: You will be prompted for the password again.
 
   - Look for the following section near the bottom and uncomment/edit the appropriate lines as follows:
 
@@ -142,7 +142,7 @@ static domain_name_servers=8.8.4.4 8.8.8.8 xxxx:xxxx:xxxx:xxxx::1
   - You may substitute your favorite DNS server IP addresses.
   - Save the file (`Ctrl`+`X` to exit, then `Y` to confirm save, then `Enter` to accept the existing filename).
 
-  :information_source: The IP address changes will not take effect until restart.
+    :information_source: The IP address changes will not take effect until restart.
 
   - Close the terminal with the `exit` command.
   - Go back to the Umbrel window.
@@ -171,12 +171,12 @@ static domain_name_servers=8.8.4.4 8.8.8.8 xxxx:xxxx:xxxx:xxxx::1
   - SSH into the Raspberry Pi 4 using a command such as `ssh umbrel@192.168.0.20`.
   - Run `sudo nano umbrel/app-data/bitcoin/data/bitcoin/bitcoin.conf` or similar to edit the bitcoind configuration file.
 
-  :information_source: Enter the password when prompted.
+    :information_source: Enter the password when prompted.
 
   - Add the line `connect=192.168.0.10` (assuming this is the IP address of a Bitcoin Node on the LAN that is already synced, e.g. your production node).
   - Save the file (`Ctrl`+`X` to exit, then `Y` to confirm save, then `Enter` to accept the existing filename).
 
-  :information_source: This configuration will get reset if `RESTORE DEFAULT SETTINGS` is clicked on the Bitcoin Node Advanced Settings page.
+    :information_source: This configuration will get reset if `RESTORE DEFAULT SETTINGS` is clicked on the Bitcoin Node Advanced Settings page.
 
   - Back in the Umbrel Bitcoin Node window, go to the `···` Advanced Settings page of the Bitcoin Node app.
   - Turn off Tor for clearnet peers. For purposes of IBD, the following settings are recommended as of the time of writing:
@@ -186,18 +186,18 @@ static domain_name_servers=8.8.4.4 8.8.8.8 xxxx:xxxx:xxxx:xxxx::1
     - Outgoing Connections to I2P Peers: On
     - Incoming Connections: Off
 
-    :warning: If incoming connections are allowed, Internet usage will be subject to the demand of the Bitcoin Network, which is unnecessary for the IBD.
+      :warning: If incoming connections are allowed, Internet usage will be subject to the demand of the Bitcoin Network, which is unnecessary for the IBD.
 
     - Cache Size (MB): 450
     - Replace-By-Fee (RBF) for All Transactions: Off
     - Prune Old Blocks: Off
     - Network: mainnet
 
-  :warning: Do not deviate from these or default settings without a clear understanding of the impact.
+    :warning: Do not deviate from these or default settings without a clear understanding of the impact.
 
   - Restart Bitcoin Node by clicking `SAVE AND RESTART BITCOIN NODE`.
 
-  :warning: The configuration items set in bitcoin.conf will get reset if `RESTORE DEFAULT SETTINGS` is clicked.
+    :warning: The configuration items set in bitcoin.conf will get reset if `RESTORE DEFAULT SETTINGS` is clicked.
 
   Once the Bitcoin Node app has restarted, check to see that it shows only a single peer connection over Clearnet (without Tor).
 
@@ -290,7 +290,7 @@ RESOLVE
 ```
   - Save the changes (`Ctrl`+`X` to exit, then `Y` to confirm save, then `Enter` to accept the existing filename).
 
-  :information_source: Note: you can start IP Flow Meter manually with a command such as `sudo nohup ipfm >/dev/null &`.
+    :information_source: Note: you can start IP Flow Meter manually with a command such as `sudo nohup ipfm >/dev/null &`.
   
 - [ ] **Perform the final check.**
 
