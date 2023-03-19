@@ -375,7 +375,7 @@ Once these items have been located and secured, proceed to the next step.
 
 - [ ] **Restore the monitoring script.**
 
-  Restore the monitoring script by copying it with a command such as `scp monitoruser@192.168.0.15:/home/monitoruser/umbrel-backup/monitor.sh .`.
+  - Restore the monitoring script by copying it with a command such as `scp monitoruser@192.168.0.15:/home/monitoruser/umbrel-backup/monitor.sh .` or by creating a new file using a command such as `pico monitor.sh` and copy-and-pasting the contents of [scripts/monitor.sh](scripts/monitor.sh) into it.
   - Make the script executable using a command such as `chmod a+x monitor.sh`.
   - Make sure the script is configured to run automatically by checking the root crontab, which can be done with the command `sudo crontab -e`.
 
