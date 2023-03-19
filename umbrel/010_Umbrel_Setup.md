@@ -228,9 +228,9 @@
 
   - Add the following line to the file:
 
-```
-@reboot su -c /home/umbrel/monitor.sh umbrel 2>&1 > /dev/null
-```
+    ```
+    @reboot su -c /home/umbrel/monitor.sh umbrel 2>&1 > /dev/null
+    ```
 
   - Exit using `Ctrl`+`X`. Confirm save with `Y` and `Enter` to accept the existing filename.
   - Open the Umbrel console by pointing your web browser to [http://192.168.0.20](http://192.168.0.20).
@@ -240,10 +240,10 @@
   - In the window that opens, find the Bitcoin Core RPC Password and copy it.
   - Go back to the shell and edit the monitoring script using a command such as `pico monitor.sh`.
   - Look for the RPC_PW variable assignment near the top:
-```
-# Bitcoin Core RPC Password
-RPC_PW="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-```
+    ```
+    # Bitcoin Core RPC Password
+    RPC_PW="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    ```
   - Update the value in quotation marks by deleting it and pasting the value previously copied from Umbrel.
 
   For the monitoring script to run, the node needs to be re-started.
@@ -263,31 +263,31 @@ RPC_PW="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   - SSH into the Raspberry Pi 4 using a command such as `ssh umbrel@192.168.0.20`.
   - Install IP Flow Meter using a command such as `sudo apt install ipfm`.
   - Edit the configuration using a command such as `sudo pico /etc/ipfm.conf` and set the configuration to something desirable such as the following:
-```
-NOPROMISC
-DEVICE eth0
-LOG 192.168.0.20/255.255.255.255 NOT WITH 192.168.0.0/255.255.255.0
-FILENAME "/var/log/ipfm/internet-daily-total"
-DUMP EVERY 1 day
-CLEAR ALWAYS
-SORT TOTAL
-RESOLVE
-NEWLOG
-LOG 192.168.0.20/255.255.255.255 WITH 192.168.0.0/255.255.255.0
-FILENAME "/var/log/ipfm/local-daily-total"
-DUMP EVERY 1 day
-CLEAR ALWAYS
-SORT TOTAL
-RESOLVE
-```
-  :information_source: The configuration above will create two log files: one for traffic between this device and endpoints outside the local network (i.e. Internet traffic) and one for traffic between this device and other devices within the local network.
+    ```
+    NOPROMISC
+    DEVICE eth0
+    LOG 192.168.0.20/255.255.255.255 NOT WITH 192.168.0.0/255.255.255.0
+    FILENAME "/var/log/ipfm/internet-daily-total"
+    DUMP EVERY 1 day
+    CLEAR ALWAYS
+    SORT TOTAL
+    RESOLVE
+    NEWLOG
+    LOG 192.168.0.20/255.255.255.255 WITH 192.168.0.0/255.255.255.0
+    FILENAME "/var/log/ipfm/local-daily-total"
+    DUMP EVERY 1 day
+    CLEAR ALWAYS
+    SORT TOTAL
+    RESOLVE
+    ```
+    :information_source: The configuration above will create two log files: one for traffic between this device and endpoints outside the local network (i.e. Internet traffic) and one for traffic between this device and other devices within the local network.
 
   Configure the traffic monitor to start automatically as follows.
   - Edit cron jobs using a command such as `sudo crontab -e`.
   - Add the following line to the end of the file:
-```
-@reboot su -c /usr/sbin/ipfm root 2>&1 > /dev/null
-```
+    ```
+    @reboot su -c /usr/sbin/ipfm root 2>&1 > /dev/null
+    ```
   - Save the changes (`Ctrl`+`X` to exit, then `Y` to confirm save, then `Enter` to accept the existing filename).
 
     :information_source: Note: you can start IP Flow Meter manually with a command such as `sudo nohup ipfm >/dev/null &`.
