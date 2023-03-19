@@ -8,7 +8,7 @@ The production Umbrel node runs full-time (optionally along with the monitoring 
 
 # Mattermost integration
 
-The production Umbrel node will optionally transmit status updates to a specified Mattermost user. This allows quick access to basic status:
+The production Umbrel node will optionally transmit status updates as a specified Mattermost user. This allows quick access to the current height of the blockchain and other basic status info:
 
 ![mm-status1](images/mm-status2.png)
 
