@@ -10,7 +10,7 @@ The production Umbrel node runs full-time (optionally along with the monitoring 
 
 The production Umbrel node will optionally transmit status updates to a specified Mattermost user. This allows quick access to basic status:
 
-![mm-status1](images/mm-status1.png)
+![mm-status1](images/mm-status2.png)
 
 Additionally, select data is optionally reported to the monitoring server to enable generation of periodic reports via Mattermost using gnuplot, such as the following:
 
