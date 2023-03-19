@@ -1,10 +1,10 @@
 # Context
 
-These procedures are intended for maintaining two Umbrel devices, one as a complete hardware backup of the other, in order to facilitate quick recovery regardless of the severity of the failure. For the sake of this documentation, the production node will be assigned the IP address of 192.168.0.10, and the backup hardware will be assigned the IP address of 192.168.0.20. A third (optional) Linux server on the same LAN is used for monitoring, backup, and reporting purposes and is assumed in this documentation to have an IP address of 192.168.0.15.
+These procedures are intended for maintaining two Umbrel devices, one as a complete hardware backup of the other, in order to facilitate quick recovery in case of hardware or software failure, regardless of the severity. For the sake of this documentation, the production node will be assigned the IP address of 192.168.0.10, and the backup hardware will be assigned the IP address of 192.168.0.20. A third (optional) Linux server on the same LAN is used for monitoring, backup, and reporting purposes and is assumed in this documentation to have an IP address of 192.168.0.15.
 
 # Normal operation
 
-The production Umbrel node runs full-time (optionally along with the monitoring server). The backup node is run only for IBD (initial blockchain download) and periodically thereafter to maintain a nearly complete backup Bitcoin blockchain that is always ready to be synced and used.During most of the time, this device remains switched off.
+The production Umbrel node runs full-time (optionally along with the monitoring server). The backup node is run only for IBD (initial blockchain download) and periodically thereafter to "top up" the backup Bitcoin blockchain so it will always be ready to be synced and used. During most of the time, this device remains switched off.
 
 # Security considerations
 
