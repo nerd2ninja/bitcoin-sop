@@ -218,7 +218,7 @@
 
 - [ ] **Add monitoring script.**
 
-  - Run the command `pico monitor.sh` to create the monitoring script. Paste in the code from [monitor.sh](monitor.sh).
+  - Run the command `pico monitor.sh` to create the monitoring script. Paste in the code from [scripts/monitor.sh](scripts/monitor.sh).
   - Make sure the script is executable using a command such as `chmod a+x monitor.sh`.
   - Make sure the script is configured to run automatically by editing the root crontab, which can be done with the command `sudo crontab -e`.
 
