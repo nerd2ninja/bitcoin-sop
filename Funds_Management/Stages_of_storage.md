@@ -39,6 +39,11 @@ https://coldcard.com/ **Requires manual dismantling of wireless devices**
 
 Verify firmware https://github.com/Coldcard/firmware
 
+Cut wireless transmission capability
+![cut NFC](https://blog.coinkite.com/images/posts-img/COLDCARD-mk4-pcb.png)
+
+Image to the right under the big port has a wire under the lettering "NFC". Cut that wire to prevent the NFC from recieving power, thereby making impossible to exfiltrate data using that wireless device in the case of a malicious firmware update (which would only happen if you didn't compile the firmware from source anyway)
+
 ## Jade
 https://blockstream.com/jade **Bluetooth can be turned off but this wireless device is difficult to remove**
 
