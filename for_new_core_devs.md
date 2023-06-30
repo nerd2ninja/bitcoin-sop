@@ -9,3 +9,6 @@ https://obc.256k1.dev/
 
 Compiling, Reviewing, and Contributing to the Bitcoin codebase
 https://jonatack.github.io/articles
+
+A paper on Bitcoin development philosophy
+https://bitcoindevphilosophy.com/
