@@ -34,6 +34,10 @@ https://selfcustody.github.io/krux/
 
 **Do not use a closed source software wallet. A signing device specific software wallet can sometimes have features which do extra verification that is specific to that signing device. The trade off however is that company specific software wallets even when open source are often too niche for the greater Bitcoin community to review and scrutinize**
 
+## Passport
+https://foundationdevices.com/
+Follow the reproducable build guide to verify the firmware: https://github.com/Foundation-Devices/passport2
+
 ## Cold Card
 https://coldcard.com/ **Requires manual dismantling of wireless devices**
 
@@ -48,8 +52,3 @@ Image to the right under the big port has a wire under the lettering "NFC". Cut 
 https://blockstream.com/jade **Bluetooth can be turned off but this wireless device is difficult to remove**
 
 Verify firmware by performing file hashes https://github.com/Blockstream/Jade **Because Jade checks that the firmware is signed, pushing the compiled software will turn the device into a brick. Thus you rely on file hashing to verify. This can be comprimised if the hashing method is broken (contains collisions). If collisions in the file hash for Jade is found please report to Jade**
-
-## Bitbox
-https://shiftcrypto.ch/bitbox02/bitcoin-only/ **note: This company posts misinformation about air gaps**
-
-Verify, compile, and install firmware https://github.com/digitalbitbox/bitbox02-firmware
