@@ -36,6 +36,7 @@ https://selfcustody.github.io/krux/
 
 ## Passport
 https://foundationdevices.com/
+
 Follow the reproducable build guide to verify the firmware: https://github.com/Foundation-Devices/passport2
 
 ## Cold Card
