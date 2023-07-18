@@ -4,6 +4,8 @@ https://bitcoincore.reviews/
 Bitcoin core and lightning development educational curriculum
 https://learning.chaincode.com/
 
+Bitcoin core repo + development philosophy https://bitcoincore.wtf/
+
 Bitcoin Core repository explained in fine detail
 https://obc.256k1.dev/
 
@@ -12,3 +14,5 @@ https://jonatack.github.io/articles
 
 A paper on Bitcoin development philosophy
 https://bitcoindevphilosophy.com/
+
+https://bitcoincore.wtf/
